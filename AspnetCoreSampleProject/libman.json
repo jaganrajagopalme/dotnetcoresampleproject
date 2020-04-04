@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "twitterlib.js@1.0.9",
+      "destination": "lib/twitterlib.js/"
+    },
+    {
+      "library": "jquery@3.4.1",
+      "destination": "lib/jquery/"
+    }
+  ]
+}
