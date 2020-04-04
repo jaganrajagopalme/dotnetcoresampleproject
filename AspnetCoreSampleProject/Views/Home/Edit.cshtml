@@ -1,0 +1,51 @@
+﻿@model AspnetCoreSampleProject.Models.Computers
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Computers</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="serialNo" />
+            <div class="form-group">
+                <label asp-for="ComputerName" class="control-label"></label>
+                <input asp-for="ComputerName" class="form-control" />
+                <span asp-validation-for="ComputerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryType" class="control-label"></label>
+                <input asp-for="CategoryType" class="form-control" />
+                <span asp-validation-for="CategoryType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InstanceType" class="control-label"></label>
+                <input asp-for="InstanceType" class="form-control" />
+                <span asp-validation-for="InstanceType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OsName" class="control-label"></label>
+                <input asp-for="OsName" class="form-control" />
+                <span asp-validation-for="OsName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

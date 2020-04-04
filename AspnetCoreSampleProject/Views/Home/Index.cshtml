@@ -49,10 +49,17 @@
                 @Html.DisplayFor(modelItem => item.price)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.serialNo">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.serialNo">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.serialNo">Delete</a>
-            </td>
+               
+                    <form asp-page-handler="DeletePost" method="post" asp-route-id="@item.serialNo">
+                    <a asp-action="Edit" asp-route-id="@item.serialNo">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.serialNo">Details</a> |
+
+                    <button type="button" onclick="return confirm('Are you sure delete this record:@item.ComputerName')">
+                        Delete
+
+                    </button>
+                </form>
+</td>
         </tr>
 }
     </tbody>

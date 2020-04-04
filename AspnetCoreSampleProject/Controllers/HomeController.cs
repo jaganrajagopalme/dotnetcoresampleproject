@@ -21,13 +21,14 @@ namespace AspnetCoreSampleProject.Controllers
 
         public IActionResult Index()
         {
-            var data = _computerInstance.ListComputers();
+            var data = _dbcontext.Computers.ToList();
             return View(data);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
+
             return View();
         }
 
@@ -35,23 +36,60 @@ namespace AspnetCoreSampleProject.Controllers
         [ActionName("Create")]
         public IActionResult CreatePost(Computers _computers)
         {
+            if (ModelState.IsValid)
+            { 
             _dbcontext.Computers.Add(_computers);
-            var data=  _dbcontext.SaveChanges();
-            return View(data);
+            var data = _dbcontext.SaveChanges();
+                return RedirectToAction (nameof(Index));
+            }
+            else
+            {
+                return View();
+            }
+           
         }
+        
         public IActionResult Details(int id)
         {
-            return View();
+            var data = _dbcontext.Computers.Find(id);
+            return View(data);
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int? id)
         {
-            return View();
+            
+            var data = _dbcontext.Computers.Find(id);
+            if (data==null)
+            {
+                return NotFound();
+            }
+            return View(data);
         }
 
+        [HttpPost]
+        [ActionName("Edit")]
+        public IActionResult EditComputer(Computers computer)
+        {
+            if (computer == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _dbcontext.Update(computer);
+                _dbcontext.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+        }
+        [HttpPost]
+        [ActionName("DeletePost")]
         public IActionResult Delete(int id)
         {
-            return View();
+           var computer=  _dbcontext.Computers.Find(id);
+            _dbcontext.Computers.Remove(computer);
+            _dbcontext.SaveChanges();
+
+            return View(nameof(Index));
         }
     }
 }
