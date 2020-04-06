@@ -1,0 +1,56 @@
+﻿@page
+
+@model RazorPageMVCSampleProject.Pages.IndexModel 
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info" > Book List</h2>
+    </div>
+    <div class="col-3">
+        <a asp-page="Create" class="btn btn-info form-control text-white">Create Book</a>
+    </div>
+    <div class="col-12 p-3 m-3">
+        <form method="post">
+            @if (Model.Mydata != null)
+            {
+
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            <label asp-for="Mydata.FirstOrDefault().BookName"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Mydata.FirstOrDefault().AuthorName"></label>
+                        </th>
+
+                        @foreach (var items in Model.Mydata)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(m => items.BookName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => items.AuthorName)
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <a class="btn btn-success btn-sm">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    </tr>
+                    
+
+                </table>
+            }
+            else
+            {
+                <p> NO Date has been found</p>
+            }
+
+        </form>
+    </div>
+</div> 
