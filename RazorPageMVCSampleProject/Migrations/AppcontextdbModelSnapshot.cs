@@ -32,6 +32,9 @@ namespace RazorPageMVCSampleProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ISBN")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("BookId");
 
                     b.ToTable("Books");

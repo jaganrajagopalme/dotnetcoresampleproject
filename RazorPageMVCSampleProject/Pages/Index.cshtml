@@ -25,21 +25,27 @@
                         <th>
                             <label asp-for="Mydata.FirstOrDefault().AuthorName"></label>
                         </th>
+                        <th>
+                            <label asp-for="Mydata.FirstOrDefault().ISBN"></label>
+                        </th>
 
                         @foreach (var items in Model.Mydata)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(m => items.BookName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(m => items.AuthorName)
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
-                                    <a class="btn btn-success btn-sm">Edit</a>
-                                </td>
-                            </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => items.BookName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => items.AuthorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => items.ISBN)
+                        </td>
+                        <td>
+                            <button asp-page="Delete" asp-route-id="@items.BookId" class="btn btn-danger btn-sm">Delete</button>
+                            <a asp-page="Edit" asp-route-id="@items.BookId" class="btn btn-success btn-sm">Edit</a>
+                        </td>
+                    </tr>
                         }
                     </tr>
                     

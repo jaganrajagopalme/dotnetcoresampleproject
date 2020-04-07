@@ -15,5 +15,8 @@ namespace RazorPageMVCSampleProject.Model
 
         [DataType(DataType.Text)]
         public string AuthorName { get; set; }
+
+        [DataType(DataType.Text)]
+        public string ISBN { get; set; }
     }
 }
